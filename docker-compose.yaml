@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  server:
+    image: darkest1artistry/server_flask
+    network_mode: host
+    ports:
+      - 5000:5000
+
+  client:
+    image: darkest1artistry/client_flask
+    volumes:
+      - ./input.json:/input.json
+    network_mode: host
+    depends_on:
+      - server
